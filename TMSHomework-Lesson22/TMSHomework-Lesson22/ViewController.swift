@@ -8,14 +8,19 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
     let showMessageButton = UIButton()
     let alertController = UIAlertController(title: "Важное сообщение", message: "Спасибо, что выбрали наше приложение!", preferredStyle: .alert)
+    let citiesArray = ["Москва", "Нью-Йорк", "Лондон", "Париж"]
+    let citiesPicker = UIPickerView()
+    let cityLabel = UILabel()
+    var selectedCityIndex: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupShowMessageButton()
         setupAlertController()
+        setupCitiesPicker()
+        setupCityLabel()
     }
 
     private func setupShowMessageButton() {
@@ -27,8 +32,8 @@ class ViewController: UIViewController {
         showMessageButton.layer.cornerRadius = buttonHeight / 2
         
         view.addSubview(showMessageButton)
-        showMessageButton.translatesAutoresizingMaskIntoConstraints = false
         
+        showMessageButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             showMessageButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             showMessageButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -53,10 +58,59 @@ class ViewController: UIViewController {
         alertController.addAction(okAction)
     }
     
+    private func setupCitiesPicker() {
+        citiesPicker.delegate = self
+        citiesPicker.dataSource = self
+        
+        view.addSubview(citiesPicker)
+        
+        citiesPicker.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            citiesPicker.bottomAnchor.constraint(equalTo: showMessageButton.topAnchor, constant: -10),
+            citiesPicker.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+    }
+    
+    private func setupCityLabel() {
+        cityLabel.textColor = .black
+        
+        view.addSubview(cityLabel)
+        
+        cityLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            cityLabel.bottomAnchor.constraint(equalTo: citiesPicker.topAnchor, constant: -10),
+            cityLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+    }
+    
+    private func updateCityLabelText() {
+        if let selectedCityIndex = selectedCityIndex {
+            cityLabel.text = citiesArray[selectedCityIndex]
+        }
+    }
+    
     @objc func showMessageButtonTapped() {
         self.present(alertController, animated: true)
     }
 
+}
+
+extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return citiesArray.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        let city = citiesArray[row]
+        selectedCityIndex = row
+        updateCityLabelText()
+        return city
+    }
+    
 }
 
 //Домашнее задание:
@@ -66,10 +120,11 @@ class ViewController: UIViewController {
 //При нажатии на кнопку, открывайте UIAlertController с заголовком и текстом (например, "Важное сообщение" и "Спасибо, что выбрали наше приложение!").+
 //UIAlertController должен содержать две кнопки: "OK" и "Отмена". При нажатии на "OK", выведите на экран сообщение "Спасибо!". При нажатии на "Отмена", закройте UIAlertController.+
 
-//Добавьте на главный экран UIPickerView с компонентами для выбора города. Вы можете использовать список городов, например: "Москва", "Нью-Йорк", "Лондон", "Париж".
+//Добавьте на главный экран UIPickerView с компонентами для выбора города. Вы можете использовать список городов, например: "Москва", "Нью-Йорк", "Лондон", "Париж". +
 //
-//Добавьте UILabel для отображения выбранного города.
-//При выборе города в UIPickerView, отобразите выбранный город в UILabel.
+//Добавьте UILabel для отображения выбранного города. +
+//При выборе города в UIPickerView, отобразите выбранный город в UILabel. +
+
 //Добавьте на главный экран ещё одну кнопку с надписью "Загрузить изображение".
 //
 //При нажатии на кнопку, открывайте UIImagePickerController, который позволит пользователю выбрать изображение из фотоальбома устройства.
