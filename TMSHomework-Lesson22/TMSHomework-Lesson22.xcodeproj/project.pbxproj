@@ -13,6 +13,7 @@
 		7A8858D42B73BCE6003196DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A8858D22B73BCE6003196DE /* Main.storyboard */; };
 		7A8858D62B73BCE9003196DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A8858D52B73BCE9003196DE /* Assets.xcassets */; };
 		7A8858D92B73BCE9003196DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A8858D72B73BCE9003196DE /* LaunchScreen.storyboard */; };
+		7A8858E32B7419FF003196DE /* SingleDay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A8858E22B7419FF003196DE /* SingleDay-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		7A8858D52B73BCE9003196DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A8858D82B73BCE9003196DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A8858DA2B73BCE9003196DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A8858E22B7419FF003196DE /* SingleDay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SingleDay-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				7A8858CC2B73BCE6003196DE /* AppDelegate.swift */,
 				7A8858CE2B73BCE6003196DE /* SceneDelegate.swift */,
+				7A8858E42B741B33003196DE /* Fonts */,
 				7A8858D02B73BCE6003196DE /* ViewController.swift */,
 				7A8858D22B73BCE6003196DE /* Main.storyboard */,
 				7A8858D52B73BCE9003196DE /* Assets.xcassets */,
@@ -65,6 +68,14 @@
 				7A8858DA2B73BCE9003196DE /* Info.plist */,
 			);
 			path = "TMSHomework-Lesson22";
+			sourceTree = "<group>";
+		};
+		7A8858E42B741B33003196DE /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7A8858E22B7419FF003196DE /* SingleDay-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +136,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A8858E32B7419FF003196DE /* SingleDay-Regular.ttf in Resources */,
 				7A8858D92B73BCE9003196DE /* LaunchScreen.storyboard in Resources */,
 				7A8858D62B73BCE9003196DE /* Assets.xcassets in Resources */,
 				7A8858D42B73BCE6003196DE /* Main.storyboard in Resources */,
